@@ -2,8 +2,9 @@ import Products from "./Product";
 
 function Dashboard() {
   return (
-    <div>
-      <h1>Webshop</h1>
+    <div className="dashboard">
+      <h1 className="webshop">Webshop</h1>
+      <input placeholder="Search for products" />
       <Products />
     </div>
   );

@@ -70,8 +70,8 @@ function Products() {
   }
 
   return products.map((product) => (
-    <div key={product.id}>
-      <h4>{product.title}</h4>
+    <div key={product.id} className="productConatiner">
+      <h4 className="productTitle">{product.title}</h4>
       {showOpinions ? (
         product.opinions.map((opinion) => (
           <div>

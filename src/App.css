@@ -3,3 +3,30 @@
   margin: 0;
   padding: 0;
 }
+
+.productConatiner {
+  height: 250px;
+  width: 400px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: lightgray;
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  border-top: 2px solid grey;
+}
+
+.productTitle {
+  border-bottom: 2px solid grey;
+  text-align: center;
+}
+
+.webshop {
+  margin-right: 1200px;
+}

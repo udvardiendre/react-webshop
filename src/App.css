@@ -3,30 +3,56 @@
   margin: 0;
   padding: 0;
 }
-
-.productConatiner {
-  height: 250px;
-  width: 400px;
-  border: 2px solid grey;
-  border-radius: 10px;
-  margin: 10px;
-  background-color: lightgray;
-}
-
 .dashboard {
   display: flex;
   flex-wrap: wrap;
 }
 
-.buttons {
-  border-top: 2px solid grey;
-}
-
-.productTitle {
-  border-bottom: 2px solid grey;
-  text-align: center;
-}
-
 .webshop {
   margin-right: 1200px;
+}
+
+.productContainer {
+  height: 250px;
+  width: 470px;
+  background-color: lightgray;
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.title {
+  border-bottom: 2px solid grey;
+}
+
+.buttons {
+  border-top: 2px solid grey;
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  text-align: center;
+}
+.price {
+  display: flex;
+  justify-content: center;
+}
+
+.discountSign {
+  display: flex;
+  justify-content: end;
+}
+
+.opinionContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.opinionContainer p:nth-child(1) {
+  margin-top: 20px;
+}
+
+.opinionContainer p:nth-child(2) {
+  margin-bottom: 20px;
 }

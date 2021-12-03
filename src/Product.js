@@ -1,103 +1,51 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const products = [
-  {
-    id: 1,
-    title: "Some fancy product",
-    description: "Soo good because soo good",
-    amount: "70",
-    currency: "USD",
-    opinions: [{ Fred: "I liked it" }, { John: "I liked it so much" }],
-  },
-  {
-    id: 2,
-    title: "Not so fancy product",
-    description: "Not soo good because not soo good",
-    amount: "7",
-    currency: "USD",
-    opinions: [{ James: "I did not like it" }, { Bob: "I hated it" }],
-  },
-  {
-    id: 3,
-    title: "A product",
-    description: "It exist",
-    amount: "17",
-    currency: "EUR",
-    opinions: [
-      {
-        Harry: "I have it",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Another fancy product",
-    description: "Also good",
-    amount: "80",
-    currency: "USD",
-    opinions: [
-      { Fred: "I liked it as well" },
-      { Rob: "I liked it so much" },
-      { Sam: "I just liked it" },
-    ],
-  },
-  {
-    id: 5,
-    title: "Who knows what",
-    description: "Someone must",
-    amount: "27",
-    currency: "USD",
-    opinions: [
-      {
-        Clark: "What is this",
-      },
-    ],
-  },
-];
+function Product({ product, opinions }) {
+  const [showDescription, setShowDescription] = useState(true);
 
-function Products() {
-  const [showOpinions, setShowOpinions] = useState(false);
-  const [btnText, changeBtnText] = useState("Show opinions");
+  const toggleContent = () => {
+    setShowDescription(!showDescription);
+  };
 
-  function changeButtonText(id) {
-    if (btnText === "Show opinions") {
-      changeBtnText("Show description");
-      setShowOpinions(true);
-    } else if (btnText === "Show description") {
-      changeBtnText("Show opinions");
-      setShowOpinions(false);
-    }
-  }
-
-  return products.map((product) => (
-    <div key={product.id} className="productConatiner">
-      <h4 className="productTitle">{product.title}</h4>
-      {showOpinions ? (
-        product.opinions.map((opinion) => (
-          <div>
-            <p className="opinionDesc">{opinion.value}</p>
-            <p className="opinionAuth">{opinion.key}</p>
-          </div>
-        ))
-      ) : (
-        <div>
-          <p>{product.description}</p>
-          <p>{product.amount}</p>
-          <p>{product.currency}</p>
-        </div>
-      )}
-      <div className="buttons">
-        <button
-          key={product.id}
-          onClick={() => changeButtonText(product.id)}
-          className="showOpinion"
-        >
-          {btnText}
-        </button>
-        <button>Add to cart</button>
+  return (
+    <div className="productContainer">
+      <div className="recommended">{product.recommended}</div>
+      <h1 className="title">{product.title}</h1>
+      <div className="productContent">
+        {showDescription ? (
+          <>
+            <p className="description"> {product.description} </p>
+            <div className="price">
+              <p>{product.amount}</p>
+              <p className="currency">{product.currency}</p>
+            </div>
+          </>
+        ) : (
+          <>
+            {product.opinions.map((opinion) => (
+              <div className="opinionContainer">
+                <p key={opinion.name}>{opinion.text}</p>
+                <em>
+                  <p key={opinion.name}>({opinion.name})</p>
+                </em>
+              </div>
+            ))}
+            <p> {product.opinion} </p>
+            <p> {product.opinion} </p>
+          </>
+        )}
       </div>
+
+      <div className="buttons">
+        <button onClick={toggleContent}>
+          {showDescription ? "Show opinion" : "Show description"}
+        </button>
+        <button disabled>Add to cart</button>
+      </div>
+
+      <div className="discountSign">{product.discount}</div>
     </div>
-  ));
+  );
 }
 
-export default Products;
+export default Product;

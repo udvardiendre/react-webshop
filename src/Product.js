@@ -9,7 +9,11 @@ function Product({ product, opinions }) {
 
   return (
     <div className="productContainer">
-      <div className="recommended">{product.recommended}</div>
+      {product.recommended && (
+        <div className="recommended">
+          <p className="recText">{product.recommended}</p>
+        </div>
+      )}
       <h1 className="title">{product.title}</h1>
       <div className="productContent">
         {showDescription ? (
@@ -37,10 +41,12 @@ function Product({ product, opinions }) {
       </div>
 
       <div className="buttons">
-        <button onClick={toggleContent}>
+        <button className="descrip" onClick={toggleContent}>
           {showDescription ? "Show opinion" : "Show description"}
         </button>
-        <button disabled>Add to cart</button>
+        <button className="addToCart" disabled>
+          Add to cart
+        </button>
       </div>
 
       <div className="discountSign">{product.discount}</div>

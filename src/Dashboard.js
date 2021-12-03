@@ -1,9 +1,9 @@
 import Product from "./Product";
+import { useState } from "react";
 
 const products = [
   {
     id: 1,
-    recommended: "",
     title: "Some fancy product",
     description: "Soo good because soo good",
     amount: "70",
@@ -28,7 +28,6 @@ const products = [
   },
   {
     id: 3,
-    recommended: "",
     title: "A product",
     description: "It exist",
     amount: "17",
@@ -58,7 +57,6 @@ const products = [
   },
   {
     id: 5,
-    recommended: "",
     title: "Who knows what",
     description: "Someone must",
     amount: "27",
@@ -74,11 +72,20 @@ const products = [
 ];
 
 function Dashboard() {
+  const [search, setSearch] = useState("");
+
+  const filteredProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
     <div className="dashboard">
       <h1 className="webshop">Webshop</h1>
-      <input placeholder="Search for products" />
-      {products.map((product) => (
+      <input
+        placeholder="Search for products"
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      {filteredProducts.map((product) => (
         <Product key={product.id} product={product} />
       ))}
     </div>
